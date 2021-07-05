@@ -50,7 +50,7 @@ router.get('/verify/:id',async(req,res)=>{
     const user = await User.findById(req.params.id);
     user.isverified = true;
     await User.findOneAndUpdate({_id:req.params.id},user);
-    return res.redirect("https://localhost:3000/home");
+    return res.redirect("https://ezy-mail1.herokuapp.com/home");
 });
 
 router.post("/addlist", async (req, res) => {

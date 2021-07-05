@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import ReactQuill from "react-quill";
 import axios from "../Api/axios";
+import { useHistory } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import "../css/EmailInput.css";
 import { Context as AuthContext } from "../context/AuthContext";
@@ -10,6 +11,7 @@ function EmailInput() {
     const [subject, setSubject] = useState("");
     const [schedule, setSchedule] = useState("");
     const [content, setContent] = useState("");
+    let history = useHistory();
     const {
         state: { email },
         tryLocalLogin,
@@ -30,6 +32,9 @@ function EmailInput() {
                 });
                 if(result.error){
                     alert("Verify Your email");
+                }
+                else{
+                    history.push("https://ezy-mail1.herokuapp.com/");
                 }
             } catch (error) {
                 
